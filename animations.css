@@ -1,0 +1,182 @@
+/* ==========================================================================
+   SOCIALPULSE AI - ANIMATIONS & MOTION SYSTEM (60 FPS TARGET)
+   ========================================================================== */
+
+/* Subtle ambient pulse for AI anomaly beacons */
+@keyframes beaconPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 14px rgba(244, 63, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+  }
+}
+
+/* Rewatch hotspot ambient glow */
+@keyframes rewatchGlow {
+  0%, 100% {
+    opacity: 0.75;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 0 5px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Holographic Radar Scanning Sweep */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Copyright Scanning Beam Vertical */
+@keyframes scanBeam {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Floating 3D card ambient idle motion */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(1.5deg);
+  }
+}
+
+/* Subtle background nebula shift */
+@keyframes nebulaDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-3%, 2%) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Shimmer Loading Skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Typing indicator dots */
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* Notification Toast Enter & Exit */
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(120%) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Modal Zoom & Fade */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateZ(-40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) translateZ(0) scale(1);
+  }
+}
+
+/* Data point draw animation */
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Apply animation utility classes */
+.animate-float {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+.animate-beacon {
+  animation: beaconPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-rewatch {
+  animation: rewatchGlow 2.5s ease-in-out infinite;
+}
+
+.animate-radar {
+  animation: radarSweep 4s linear infinite;
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-float,
+  .animate-beacon,
+  .animate-rewatch,
+  .animate-radar {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="space">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>दृष्टि (DHRISTI) AI — Government Threat Intelligence & Command Center (प्रवाह & उद्गम पोर्टल)</title>
+  <meta name="description"
+    content="दृष्टि (Dhristi) AI — Government Threat Intelligence, Algorithmic Oversight, and Threat Command Center (प्रवाह & उद्गम पोर्टल).">
+  <link rel="icon" type="image/jpeg" href="assets/dhristi-logo.jpg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/entry.css">
+  <link rel="stylesheet" href="css/splash.css">
+</head>
+
+<body>
+
+  <!-- ========================================
+       PREMIUM DHRISTI OPENING / SPLASH EXPERIENCE
+       ======================================== -->
+  <div id="dhristi-splash-screen" class="dhristi-splash-screen" aria-hidden="true">
+    <div class="dhristi-splash-backdrop"></div>
+    <div class="dhristi-splash-content">
+      <div class="dhristi-splash-logo-wrapper">
+        <div class="dhristi-splash-ring dhristi-splash-ring-1"></div>
+        <div class="dhristi-splash-ring dhristi-splash-ring-2"></div>
+        <div class="dhristi-splash-glow"></div>
+        <div class="dhristi-splash-logo-container">
+          <img src="assets/dhristi-logo.jpg" alt="DHRISTI AI Logo" class="dhristi-splash-logo-img">
+          <div class="dhristi-splash-shimmer"></div>
+        </div>
+      </div>
+      <div class="dhristi-splash-brand">
+        <h1 class="dhristi-splash-title">
+          <span class="dhristi-splash-title-hi">दृष्टि</span>
+          <span class="dhristi-splash-title-en">DHRISTI AI</span>
+        </h1>
+        <div class="dhristi-splash-tagline">Government Threat Intelligence & Command Center</div>
+        <div class="dhristi-splash-status">
+          <span class="dhristi-splash-status-dot"></span>
+          <span class="dhristi-splash-status-text">QUANTUM ZERO-TRUST KERNEL ONLINE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Fog & WebGL Background Layers -->
+  <div id="webgl-canvas-container">
+    <canvas id="webgl-bg-canvas"></canvas>
+  </div>
+  <!-- ========================================
+       CYBERSECURITY ZERO-TRUST ACCESS GATE (APP ENTRY GATE)
+       ======================================== -->
+  <div id="cyber-gate-screen" class="cyber-gate-screen">
+    <div class="cyber-gate-card">
+      <div style="text-align: center;">
+        <div class="cyber-badge-top">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Zero-Trust Protocol Active • E2E Encrypted</span>
+        </div>
+
+        <div class="cyber-biometric-circle" style="animation: none; border: 2px solid rgba(255, 153, 51, 0.75); box-shadow: 0 0 25px rgba(255, 153, 51, 0.5), 0 0 50px rgba(255, 153, 51, 0.2); background: #000; overflow: hidden; padding: 2px;">
+          <img src="assets/dhristi-logo.jpg" alt="Dhristi Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+        </div>
+
+        <h2 style="font-size: 1.5rem; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700; margin-bottom: 4px;">
+          दृष्टि साइबर कमांड केंद्र
+        </h2>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px;">
+          भारत सरकार • Government Threat Intelligence & Command Center (प्रवाह & उद्गम)
+        </p>
+      </div>
+
+      <!-- Main Login Form with Two-Factor OTP Required -->
+      <form id="cyber-login-form" onsubmit="event.preventDefault(); window.verifyCyberDemoOTP();">
+        <div class="cyber-input-group">
+          <div class="cyber-input-label">
+            <span>OPERATOR IDENTITY (EMAIL)</span>
+            <span id="cyber-clearance-tag" style="color: #ff9933;">LEVEL-5 GOVERNANCE & AUDIT</span>
+          </div>
+          <input id="cyber-input-user" type="text" class="cyber-input-box" value="admin@dhristi.gov" readonly style="background: rgba(255,255,255,0.04); cursor: default;">
+        </div>
+
+        <div class="cyber-input-group">
+          <div class="cyber-input-label">
+            <span>ENCRYPTED ACCESS TOKEN / KEY</span>
+            <span style="color: var(--accent-emerald);">SHA-256 VERIFIED</span>
+          </div>
+          <input id="cyber-input-token" type="password" class="cyber-input-box" value="ADMIN-ROOT-2026-ALPHA" readonly style="background: rgba(255,255,255,0.04); cursor: default;">
+        </div>
+
+        <!-- Two-Factor Authentication (OTP Required) Box -->
+        <div style="background: rgba(10, 15, 26, 0.85); border: 1px solid rgba(255, 153, 51, 0.45); border-radius: 12px; padding: 16px; margin: 16px 0; text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.72rem; color: #ff9933; font-weight: 700; font-family: 'JetBrains Mono'; text-transform: uppercase;">
+              🛡️ TWO-FACTOR OTP REQUIRED
+            </span>
+            <button type="button" class="btn btn-secondary" onclick="window.autoFillDemoOTP()" style="padding: 3px 10px; font-size: 0.7rem; border-color: #00f2fe; color: #00f2fe;">
+              ⚡ 1-Click Auto-Fill
+            </button>
+          </div>
+
+          <div style="background: rgba(0, 242, 254, 0.08); border: 1px dashed rgba(0, 242, 254, 0.35); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 0.7rem; color: var(--text-tertiary);">DEMO PASSCODE PRELOADED:</span>
+            <strong style="font-size: 1.15rem; font-family: 'JetBrains Mono'; color: #00f2fe; letter-spacing: 0.15em;">202609</strong>
+          </div>
+
+          <!-- 6-digit OTP Input -->
+          <div style="margin-bottom: 6px;">
+            <label style="display: block; font-size: 0.68rem; color: var(--text-tertiary); margin-bottom: 6px; text-transform: uppercase;">ENTER 6-DIGIT OTP</label>
+            <input type="text" id="cyber-demo-otp-input" maxlength="6" value="202609" placeholder="______" 
+              style="width: 220px; text-align: center; font-size: 1.6rem; letter-spacing: 0.35em; font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #fff; background: rgba(0,0,0,0.6); border: 2px solid var(--brand-cyan, #00f2fe); border-radius: 10px; padding: 8px 12px; transition: border-color 0.2s;"
+              onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.verifyCyberDemoOTP(); }">
+          </div>
+          <div id="cyber-otp-error" style="display: none; color: #f43f5e; font-size: 0.75rem; margin-top: 6px;"></div>
+        </div>
+
+        <button type="submit" id="btn-verify-otp-submit" class="btn-cyber-primary" style="width: 100%; padding: 12px 16px; font-size: 0.88rem; font-weight: 700;">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Verify OTP & Enter Command Center</span>
+        </button>
+      </form>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       DHRISTI AI - FIRST PAGE / ENTRY PAGE
+       ======================================== -->
+  <div id="socialpulse-entry-page" class="entry-page-screen">
+    <div class="entry-container">
+      
+      <!-- Top Brand Bar -->
+      <header class="entry-top-bar">
+        <div class="entry-brand-group">
+          <div class="entry-brand-icon" style="padding: 0; overflow: hidden; background: #000; border: 1px solid rgba(0,242,254,0.5); box-shadow: 0 0 16px rgba(0,242,254,0.3);">
+            <img src="assets/dhristi-logo.jpg" alt="Dhristi Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+          </div>
+          <div class="entry-brand-text">
+            <span class="entry-brand-title">DHRISTI AI</span>
+            <span class="entry-brand-tag">Threat Intelligence (प्रवाह)</span>
+          </div>
+        </div>
+
+        <div class="entry-top-actions">
+          <div class="entry-backend-badge">
+            <span id="entry-backend-dot" class="entry-backend-dot"></span>
+            <span id="entry-backend-text">Checking Backend...</span>
+          </div>
+          <button id="entry-gov-btn" class="entry-skip-link" type="button" onclick="window.launchGovFromEntry()" style="background: rgba(0, 242, 254, 0.1); border-color: rgba(0, 242, 254, 0.3); color: var(--brand-cyan);">
+            <span>Gov Command Center (प्रवाह)</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </button>
+          <button id="entry-skip-btn" class="entry-skip-link" type="button">
+            <span>Enter Command Center (Direct)</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Hero Statement -->
+      <div class="entry-hero">
+        <div class="entry-pill-badge">
+          <span>✦ National Cyber Intelligence Platform</span>
+        </div>
+        <h1 class="entry-title">
+          National Sovereign Information Infrastructure <br>
+          <span class="text-gradient">Threat Intelligence Command Center.</span>
+        </h1>
+        <p class="entry-subtitle">
+          Real-time algorithmic surveillance, multi-platform threat clustering, and public safety telemetry under sovereign governance.
+        </p>
+      </div>
+
+      <!-- Government Intelligence Command Center Direct Launcher -->
+      <div class="entry-cards-grid" style="display: flex; justify-content: center; max-width: 620px; margin: 0 auto 30px;">
+        <!-- 5. Government Intelligence Command Center (Pravaah / Udgam) Card -->
+        <div class="entry-card gov-entry-card" style="border-color: rgba(0, 242, 254, 0.35); background: linear-gradient(135deg, rgba(13, 20, 36, 0.85), rgba(15, 23, 42, 0.95));">
+          <div>
+            <div class="entry-card-header">
+              <div class="entry-platform-pill gov" style="background: rgba(0, 242, 254, 0.15); color: var(--brand-cyan); border: 1px solid rgba(0, 242, 254, 0.3);">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                <span>National Intelligence</span>
+              </div>
+              <div class="entry-connected-badge visible" style="display: flex; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: var(--accent-emerald);">
+                <span class="dot" style="background: var(--accent-emerald);"></span>
+                <span>Pravaah & Udgam</span>
+              </div>
+            </div>
+
+            <div class="entry-card-body">
+              <h3 class="entry-card-title" style="color: #fff;">Government Command Center</h3>
+              <p class="entry-card-subtitle">Zero-Trust National Information & Threat Intelligence</p>
+
+              <div class="entry-features-list">
+                <span class="entry-feature-tag">Viral Propagation</span>
+                <span class="entry-feature-tag">Coordination Radar</span>
+                <span class="entry-feature-tag">Section 21 Safeguards</span>
+                <span class="entry-feature-tag">State Pulse (India)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="entry-card-actions">
+            <button id="btn-continue-gov" class="btn btn-primary" onclick="window.launchGovFromEntry()" type="button" style="width: 100%; padding: 12px; font-size: 0.9rem; justify-content: center; background: linear-gradient(135deg, #00f2fe, #6366f1); border-radius: var(--radius-md); box-shadow: 0 4px 16px rgba(0, 242, 254, 0.25);">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <span>Enter Gov Command Center</span>
+            </button>
+            <div style="font-size: 0.72rem; color: var(--text-tertiary); text-align: center; margin-top: 8px;">
+              Zero-Trust clearance & 2FA OTP verification required
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Enter Dashboard Action & Privacy Card -->
+      <div class="entry-bottom-actions">
+        <button id="btn-enter-dashboard" class="btn-enter-dashboard" type="button">
+          <span id="btn-enter-dashboard-text">Explore Dashboard in Demo Mode →</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <div class="entry-privacy-card">
+          <div class="entry-privacy-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div class="entry-privacy-text">
+            <h4>Privacy-First, Consent-Based Analytics</h4>
+            <p>
+              We only request read-only permissions for channel telemetry. Individual viewer identities and personal watch histories are never displayed, accessed, or stored.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Application Shell -->
+  <div class="app-container" style="display: none;">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-logo-area">
+        <div class="brand-icon-wrapper" style="padding: 0; overflow: hidden; background: #000; border: 1px solid rgba(0,242,254,0.5); box-shadow: 0 0 16px rgba(0,242,254,0.35);">
+          <img src="assets/dhristi-logo.jpg" alt="Dhristi Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+        </div>
+        <div class="brand-title-group">
+          <span class="brand-title">दृष्टि (DHRISTI)</span>
+          <span class="brand-tag" id="sidebar-role-badge">Gov Threat Intelligence (प्रवाह)</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- ========================================
+             GOVERNMENT INTELLIGENCE NAVIGATION (Permanent)
+             ======================================== -->
+        <div id="sidebar-gov-nav" class="sidebar-role-group" style="display: block;">
+          <span class="nav-section-label" style="display: flex; align-items: center; justify-content: space-between;">
+            <span>दृष्टि प्रवाह पोर्टल</span>
+            <span class="nav-badge" style="background: rgba(255,153,51,0.25); color: #ff9933; border-color: #ff9933;">Gov Intel</span>
+          </span>
+          <a href="#" class="nav-item active" data-view="gov-command-center" onclick="if (window.navigateToGovSection) { window.navigateToGovSection('overview'); } else if (window.navigateTo) { window.navigateTo('gov-command-center'); } return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            <span>Command Center</span>
+            <span class="nav-badge pulse" style="background: rgba(16,185,129,0.25); color: #10b981;">10 Cards</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-viral-intel'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            <span>Viral Content Intel</span>
+            <span class="nav-badge" style="background: rgba(244,63,94,0.2); color: #f43f5e;">Velocity</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-state-pulse'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>State Pulse (भारत)</span>
+            <span class="nav-badge" style="background: rgba(59,130,246,0.2); color: #60a5fa;">States</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-narratives'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Narrative Intelligence</span>
+            <span class="nav-badge" style="background: rgba(16,185,129,0.2); color: #10b981;">Sec. 21</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-coordination'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span>Coordination Radar</span>
+            <span class="nav-badge" style="background: rgba(245,158,11,0.2); color: #f59e0b;">Synced</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-filtration'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <span>Content Filtration</span>
+            <span class="nav-badge" style="background: rgba(168,85,247,0.2); color: #c084fc;">AI/Real %</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-alerts'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            <span>Alert Center</span>
+            <span class="nav-badge pulse" style="background: rgba(244,63,94,0.3); color: #f43f5e;">Active</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-provenance'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Provenance Oversight</span>
+            <span class="nav-badge" style="background: rgba(16,185,129,0.2); color: #10b981;">I4C / 1930</span>
+          </a>
+          <a href="#" class="nav-item" onclick="window.navigateToGovSection('card-mission-control'); return false;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>Mission Control (Cyber)</span>
+            <span class="nav-badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">Scam Def</span>
+          </a>
+          <a href="#" class="nav-item" id="nav-gov-admin-audit" onclick="window.navigateToGovSection('card-audit'); return false;" style="display: none; border-left: 2px solid #ff9933;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span style="color: #ff9933;">Admin Audit & Report</span>
+            <span class="nav-badge" style="background: rgba(255,153,51,0.3); color: #ff9933;">L-5</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="creator-profile-card" style="border: 1px solid rgba(255, 153, 51, 0.35); background: rgba(255, 153, 51, 0.08); padding: 10px 12px; border-radius: 10px;">
+          <div class="creator-avatar" id="sidebar-avatar-el" style="background: linear-gradient(135deg, #ff9933, #ea580c); color: #000; font-weight: 800;">GOV</div>
+          <div class="creator-details">
+            <span class="creator-name" id="sidebar-user-name" style="color: #ff9933; font-weight: 700;">Dr. Rajesh Kumar</span>
+            <span class="creator-role" id="sidebar-user-role" style="color: var(--accent-emerald);">● Level-5 TS/SCI Root</span>
+          </div>
+        </div>
+        <button onclick="window.lockCyberTerminal()" class="btn btn-secondary" style="width: 100%; margin-top: 10px; font-size: 0.74rem; padding: 7px 12px; display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--text-tertiary); border-color: rgba(255,255,255,0.12);">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Lock Cyber Terminal</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="main-wrapper">
+
+      <!-- ========================================
+           OFFICIAL GOVERNMENT PLATFORM HEADER (ADMINISTRATOR THEME)
+           ======================================== -->
+      <div class="govt-official-header-strip" id="govt-official-header-strip">
+        <div class="govt-emblem-badge">
+          <div class="govt-emblem-icon" style="padding: 0; overflow: hidden; background: #000; border: 1px solid rgba(255,153,51,0.6); box-shadow: 0 0 14px rgba(255,153,51,0.3); border-radius: 6px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
+            <img src="assets/dhristi-logo.jpg" alt="Dhristi Logo" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="govt-emblem-text">
+            <h1>भारत सरकार &bull; GOVERNMENT OF INDIA</h1>
+            <p>राष्ट्रीय सूचना विज्ञान केंद्र &bull; National Informatics Centre | दृष्टि (DHRISTI) प्रवाह पोर्टल</p>
+          </div>
+        </div>
+        <div class="govt-badge-actions">
+          <div class="govt-authority-selector-wrapper" style="position: relative; display: inline-block;">
+            <button type="button" class="govt-badge-pill" id="btn-authority-switcher" onclick="window.toggleAuthorityDropdown(event)" style="cursor: pointer; background: rgba(255,153,51,0.15); border: 1px solid rgba(255,153,51,0.4); color: #ff9933; display: flex; align-items: center; gap: 6px;" title="Click to Switch Administrator Authority Persona">
+              <span>👑</span>
+              <span id="govt-admin-user-tag">Dr. Rajesh Kumar (DG CERT-In)</span>
+              <span style="font-size: 0.65rem; opacity: 0.7;">▼</span>
+            </button>
+            <div id="govt-authority-dropdown" style="display: none; position: absolute; top: calc(100% + 6px); right: 0; min-width: 320px; background: rgba(15,23,42,0.98); border: 1px solid rgba(255,153,51,0.4); border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.7); z-index: 1000; padding: 6px; backdrop-filter: blur(12px);">
+              <!-- Rendered dynamically by window.renderAuthorityDropdown() -->
+            </div>
+          </div>
+          <span class="govt-badge-pill" style="border-color: rgba(16,185,129,0.4); color: #10b981;">
+            <span>🔒</span>
+            <span id="govt-clearance-tag">LEVEL-5 TS/SCI CLEARANCE</span>
+          </span>
+          <button type="button" class="btn btn-secondary" onclick="window.toggleGovAdminTheme()" style="padding: 4px 10px; font-size: 0.72rem; border-color: #ff9933; color: #ff9933;">
+            Toggle NIC Theme
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Sticky Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-nav-toggle" id="mobile-nav-toggle-btn" aria-label="Toggle menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <!-- Workspace Indicator Pill (Government) -->
+          <div id="header-gov-session-pill" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,153,51,0.12); border: 1px solid rgba(255,153,51,0.35); padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; color: #ff9933; font-family: 'JetBrains Mono'; margin-right: 12px;">
+            <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #ff9933;"></span>
+            <span id="header-gov-role-text">Gov Administrator (Level-5)</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div id="live-alert-panel">
+            <button type="button" class="live-alert-trigger" onclick="window.toggleLiveAlertPanel()" title="Live simulated alerts">
+              <span class="crit">🔴 <span id="live-alert-crit">0</span> Critical</span>
+              <span class="high">🟠 <span id="live-alert-high">0</span> High</span>
+              <span class="med">🟡 <span id="live-alert-med">0</span> Medium</span>
+            </button>
+            <div id="live-alert-dropdown"><div id="live-alert-dropdown-list"></div></div>
+          </div>
+
+          <!-- Voice Command GPT Header Button -->
+          <button id="btn-voice-copilot-header" class="btn btn-secondary" onclick="window.toggleVoiceCopilot()"
+            style="padding: 8px 12px; font-size: 0.8rem; border-color: #ff9933; color: #ff9933; display: flex; align-items: center; gap: 6px;" title="दृष्टि वॉयस जीपीटी (Voice Assistant)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+            </svg>
+            <span>वॉयस GPT</span>
+          </button>
+
+          <!-- Theme Status Badge / Button -->
+          <button id="btn-theme-toggle" class="btn btn-secondary" onclick="window.toggleTheme()"
+            style="padding: 8px 14px; font-size: 0.8rem; border-color: rgba(99, 102, 241, 0.35); color: var(--text-primary);" aria-label="Dark Cyber Theme" title="Application is unified in Dark Cyber Theme">
+            <span id="btn-theme-toggle-icon" style="display: inline-flex; align-items: center; color: var(--brand-cyan);">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+            <span id="btn-theme-toggle-text">Dark Cyber</span>
+          </button>
+
+          <!-- Connect Accounts CTA -->
+          <button class="btn btn-secondary" id="btn-header-connect-accounts" onclick="window.openConnectAccountsModal()"
+            style="padding: 8px 14px; font-size: 0.82rem; border-color: rgba(0, 242, 254, 0.4); color: var(--brand-cyan); display: flex; align-items: center; gap: 6px;" title="Connect Platform Accounts & Telemetry">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+            <span>Connect Accounts</span>
+          </button>
+
+          <!-- Government Security Session Lock Pill -->
+          <div id="header-gov-lock-pill" class="cyber-session-indicator" style="display: inline-flex; cursor: pointer;" onclick="window.lockCyberTerminal('User manual lock')" title="Click to Lock Terminal (Zero-Trust)">
+            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></span>
+            <span>Gov Session Active</span>
+            <span style="color: rgba(255,255,255,0.3); margin: 0 2px;">|</span>
+            <span style="color: #ef4444; font-weight: 600;">🔒 Lock</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Views -->
+      <div class="content-body">
+
+        <section id="view-gov-command-center" class="view-section active" style="display: block;">
+          <div id="gov-command-center-container" class="gov-command-center"></div>
+        </section>
+
+        <!-- ========================================
+             VIEW: CYBERSECURITY & SOCIETY IMPACT TREND RADAR
+             ======================================== -->
+        <section id="view-society-trends" class="view-section" style="display: none;">
+          <div class="page-title-row">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span class="audit-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); font-size: 0.7rem; padding: 2px 8px; border-radius: 99px; font-weight: 700;">
+                  ALGORITHMIC SAFETY SURVEILLANCE
+                </span>
+                <span class="nav-badge pulse">Real-time Global Threat Ingestion</span>
+              </div>
+              <h2 class="page-headline">Society Impact & Security Trend Radar</h2>
+              <p class="page-subtitle">Algorithmic intelligence distinguishing between trends that are beneficial for society vs harmful threats</p>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="window.simulateTrendIngestion()" style="background: linear-gradient(135deg, #10b981, #00f2fe);">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              <span>Simulate Global Trend Ingestion</span>
+            </button>
+          </div>
+
+          <div class="society-trends-container">
+            <!-- Filter Bar -->
+            <div class="trends-filter-bar">
+              <div class="trends-type-tabs">
+                <button type="button" class="trend-tab-btn active all" onclick="window.filterSocietyTrends('all')">
+                  <span>🌐</span> All Monitored Trends (12)
+                </button>
+                <button type="button" class="trend-tab-btn beneficial" onclick="window.filterSocietyTrends('beneficial')">
+                  <span>🟢</span> Beneficial for Society (6)
+                </button>
+                <button type="button" class="trend-tab-btn harmful" onclick="window.filterSocietyTrends('harmful')">
+                  <span>🔴</span> Harmful / Dangerous for Society (6)
+                </button>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.76rem; color: var(--text-tertiary);">Filter Category:</span>
+                <select id="trend-category-filter" class="video-select-input" onchange="window.filterSocietyCategory(this.value)" style="padding: 6px 12px; font-size: 0.8rem;">
+                  <option value="all">All Categories</option>
+                  <option value="Cyber Defense">Cyber Defense</option>
+                  <option value="Media Literacy">Media Literacy</option>
+                  <option value="Data Sovereignty">Data Sovereignty</option>
+                  <option value="Social Engineering">Social Engineering</option>
+                  <option value="Disinformation">Disinformation</option>
+                  <option value="Financial Fraud">Financial Fraud</option>
+                  <option value="Public Health">Public Health</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Societal Impact & Velocity Scatter Matrix -->
+            <div class="trends-matrix-panel">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <div>
+                  <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff;">Societal Impact vs Viral Velocity Matrix</h4>
+                  <p style="font-size: 0.74rem; color: var(--text-secondary); margin: 0;">Interactive 2D plot mapping public threat/benefit rating against viral spread speed</p>
+                </div>
+                <div style="display: flex; gap: 14px; font-size: 0.72rem;">
+                  <span style="display: flex; align-items: center; gap: 6px; color: var(--accent-emerald);">
+                    <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-emerald);"></span> Beneficial Trend
+                  </span>
+                  <span style="display: flex; align-items: center; gap: 6px; color: var(--accent-rose);">
+                    <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-rose);"></span> Harmful / Security Threat
+                  </span>
+                </div>
+              </div>
+
+              <div style="height: 180px; width: 100%; position: relative; background: rgba(0,0,0,0.25); border-radius: var(--radius-md); border: 1px solid var(--border-subtle); overflow: hidden;">
+                <svg id="trends-matrix-svg" viewBox="0 0 800 180" style="width: 100%; height: 100%;">
+                  <!-- Center dividing line -->
+                  <line x1="0" y1="90" x2="800" y2="90" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4" stroke-width="1"/>
+                  <text x="14" y="24" fill="#10b981" font-size="11" font-family="JetBrains Mono" font-weight="bold">↑ HIGH BENEFIT FOR SOCIETY</text>
+                  <text x="14" y="165" fill="#f43f5e" font-size="11" font-family="JetBrains Mono" font-weight="bold">↓ CRITICAL HARM / THREAT TO SOCIETY</text>
+                  <text x="700" y="84" fill="#94a3b8" font-size="10" font-family="JetBrains Mono" text-anchor="end">VIRAL VELOCITY →</text>
+
+                  <!-- Beneficial Dots -->
+                  <circle cx="180" cy="30" r="7" fill="#10b981" class="animate-beacon" style="cursor: pointer;" title="Passkey Adoption"/>
+                  <circle cx="340" cy="45" r="8" fill="#10b981" style="cursor: pointer;" title="Local AI Privacy"/>
+                  <circle cx="510" cy="25" r="9" fill="#10b981" style="cursor: pointer;" title="Spotting Deepfakes"/>
+                  <circle cx="680" cy="35" r="7" fill="#10b981" style="cursor: pointer;" title="STEM Education"/>
+
+                  <!-- Harmful Dots -->
+                  <circle cx="210" cy="140" r="7" fill="#f43f5e" style="cursor: pointer;" title="Quishing QR Scams"/>
+                  <circle cx="430" cy="155" r="9" fill="#f43f5e" class="animate-beacon" style="cursor: pointer;" title="AI Voice Clones"/>
+                  <circle cx="620" cy="145" r="8" fill="#f43f5e" style="cursor: pointer;" title="Rage-Bait Disinformation"/>
+                  <circle cx="740" cy="150" r="9" fill="#f43f5e" style="cursor: pointer;" title="Dangerous Stunts"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Trends Dynamic Cards Grid -->
+            <div id="society-trends-cards-grid" class="trends-cards-grid"></div>
+          </div>
+        </section>
+
+        <!-- ========================================
+             VIEW 9: SYSTEM PREFERENCES & SETTINGS
+             ======================================== -->
+        <section id="view-settings" class="view-section">
+          <div class="page-title-row">
+            <div>
+              <h2 class="page-headline">System Preferences & Settings</h2>
+              <p class="page-subtitle">Telemetry options, privacy controls, and 3D visual fidelity</p>
+            </div>
+          </div>
+
+          <div class="glass-panel" style="padding: 28px; max-width: 780px;">
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+                <div>
+                  <h4 style="font-size: 0.95rem; color: #fff;">Consent-Based Viewer Analytics</h4>
+                  <p style="font-size: 0.78rem; color: var(--text-secondary);">Anonymized second-by-second hold
+                    telemetry gathered via platform player</p>
+                </div>
+                <input type="checkbox" checked
+                  style="transform: scale(1.3); cursor: pointer; accent-color: var(--brand-indigo);">
+              </div>
+
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+                <div>
+                  <h4 style="font-size: 0.95rem; color: #fff;">3D Parallax & WebGL Accelerations</h4>
+                  <p style="font-size: 0.78rem; color: var(--text-secondary);">Enable dynamic depth tilt, particle
+                    field, and holographic rendering</p>
+                </div>
+                <input type="checkbox" checked
+                  style="transform: scale(1.3); cursor: pointer; accent-color: var(--brand-cyan);">
+              </div>
+
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 16px;">
+                <div>
+                  <h4 style="font-size: 0.95rem; color: #fff;">AI Hypothesis Auto-Generation</h4>
+                  <p style="font-size: 0.78rem; color: var(--text-secondary);">Automatically trigger AI hypothesis
+                    synthesis on drop-off anomalies > 15%</p>
+                </div>
+                <input type="checkbox" checked
+                  style="transform: scale(1.3); cursor: pointer; accent-color: var(--brand-purple);">
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h4 style="font-size: 0.95rem; color: #fff;">Copyright Radar Sensitivity</h4>
+                  <p style="font-size: 0.78rem; color: var(--text-secondary);">Threshold level for automated similarity
+                    alerts</p>
+                </div>
+                <select class="video-select-input"
+                  style="padding: 6px 12px; background: rgba(255,255,255,0.05); border-radius: var(--radius-sm);">
+                  <option>Standard (75% Threshold)</option>
+                  <option>Aggressive (60% Threshold)</option>
+                  <option>Relaxed (85% Threshold)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ========================================
+       MODAL: UNIVERSAL CONNECT ACCOUNTS MODAL
+       ======================================== -->
+  <div id="connect-accounts-modal" class="modal-backdrop" style="display: none; align-items: center; justify-content: center; z-index: 9999;">
+    <div class="modal-dialog platform-cyber-modal-card" style="max-width: 580px; width: 92%; max-height: 90vh; overflow-y: auto;">
+      <div class="modal-header" style="border-bottom: 1px solid var(--border-glass); padding-bottom: 14px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 38px; height: 38px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(0,242,254,0.5); box-shadow: 0 0 12px rgba(0,242,254,0.3); display: flex; align-items: center; justify-content: center; background: #000;">
+            <img src="assets/dhristi-logo.jpg" alt="Dhristi Logo" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 class="modal-title" style="font-size: 1.15rem; margin: 0; color: #fff;">Connect Platform Accounts</h3>
+              <span class="audit-badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-size: 0.65rem; padding: 2px 8px; border-radius: 99px; font-weight: 700;">LIVE TELEMETRY SYNC</span>
+            </div>
+            <p style="font-size: 0.74rem; color: var(--text-secondary); margin: 2px 0 0;">
+              Authenticate and synchronize social channels, broadcast feeds, and threat monitoring
+            </p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.closeConnectAccountsModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding-top: 16px;">
+        <!-- Step 1: Platform Selection Grid -->
+        <div id="connect-step-platforms">
+          <div style="font-size: 0.74rem; color: var(--text-tertiary); margin-bottom: 12px; font-weight: 600; text-transform: uppercase;">
+            Select a Platform to Link Your Account:
+          </div>
+          <div class="connect-platforms-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px;">
+            <!-- Rendered by window.renderConnectPlatformsGrid() -->
+          </div>
+        </div>
+
+        <!-- Step 2: Account Login Credentials Form -->
+        <div id="connect-step-credentials" style="display: none;">
+          <button type="button" class="btn btn-secondary" onclick="window.backToConnectPlatformGrid()" style="padding: 4px 10px; font-size: 0.72rem; margin-bottom: 14px;">
+            ← Back to Platform List
+          </button>
+
+          <div id="connect-active-platform-banner" style="display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;">
+            <div id="connect-banner-icon" style="font-size: 1.4rem;">▶</div>
+            <div>
+              <strong id="connect-banner-name" style="font-size: 0.95rem; color: #fff; display: block;">YouTube Account</strong>
+              <span id="connect-banner-protocol" style="font-size: 0.7rem; color: var(--text-tertiary); font-family: 'JetBrains Mono';">OAuth 2.0 PKCE / Read Telemetry</span>
+            </div>
+          </div>
+
+          <form onsubmit="window.submitConnectCredentials(event)">
+            <div class="cyber-input-group" style="margin-bottom: 12px;">
+              <label style="font-size: 0.72rem; color: var(--text-tertiary); display: block; margin-bottom: 4px; text-transform: uppercase;">Account Username / Handle / Channel ID:</label>
+              <input type="text" id="connect-input-handle" class="cyber-input-box" placeholder="@account or Channel ID" required style="width: 100%; padding: 8px 12px; font-size: 0.82rem;">
+            </div>
+
+            <div class="cyber-input-group" style="margin-bottom: 14px;">
+              <label style="font-size: 0.72rem; color: var(--text-tertiary); display: block; margin-bottom: 4px; text-transform: uppercase;">Password / API Access Token / Key:</label>
+              <input type="password" id="connect-input-secret" class="cyber-input-box" placeholder="Enter API token or account password" required style="width: 100%; padding: 8px 12px; font-size: 0.82rem;">
+            </div>
+
+            <!-- Preloaded Demo Credentials Quick Fill -->
+            <div style="background: rgba(0, 242, 254, 0.06); border: 1px dashed rgba(0, 242, 254, 0.35); border-radius: 8px; padding: 10px 12px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <span style="font-size: 0.68rem; color: var(--text-tertiary); display: block;">DEMO CREDENTIALS:</span>
+                <span id="connect-demo-handle-hint" style="font-size: 0.76rem; color: var(--brand-cyan); font-family: 'JetBrains Mono';">@dhristi_official_in</span>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="window.autoFillConnectCredentials()" style="padding: 4px 10px; font-size: 0.72rem; border-color: var(--brand-cyan); color: var(--brand-cyan);">
+                ⚡ 1-Click Fast Fill
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+              <button type="button" class="btn btn-secondary" onclick="window.closeConnectAccountsModal()" style="flex: 1;">Cancel</button>
+              <button type="submit" id="btn-submit-connect-account" class="btn btn-primary" style="flex: 2; background: linear-gradient(135deg, #00f2fe, #6366f1); border: none; font-weight: 700;">
+                <span>Authorize & Connect</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Multi-Platform Post Inspection Modal -->
+  <div id="post-inspection-modal" class="post-inspection-modal-backdrop" style="display: none;"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/demo-engine.js"></script>
+  <script src="js/platform-config.js"></script>
+  <script src="js/webgl-background.js"></script>
+  <script src="js/fingerprint-visualizer.js"></script>
+  <script src="js/instagram.js"></script>
+  <script src="js/pinterest.js"></script>
+  <script src="js/x-platform.js"></script>
+  <script src="js/extra-platforms.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/api-client.js"></script>
+  <script src="js/government-intelligence.js"></script>
+  <script src="js/voice-copilot.js"></script>
+  <script src="js/creator-publish.js"></script>
+  <script src="js/entry.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/drishti-upgrade.js"></script>
+  <script src="js/splash.js"></script>
+
+</body>
+
+</html>
