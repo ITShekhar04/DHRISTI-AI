@@ -7,9 +7,67 @@
 
   let currentIgTab = 'overview';
   let currentReel = null;
+  let igStatusLoading = false;
 
   function getIgData() {
     return SOCIALPULSE_DATA.instagram;
+  }
+
+  async function loadInstagramApiStatus() {
+    if (igStatusLoading) return;
+    igStatusLoading = true;
+    try {
+      if (window.SocialPulseAPI && window.SocialPulseAPI.fetchInstagramStatus) {
+        const st = await window.SocialPulseAPI.fetchInstagramStatus();
+        if (st) {
+          window.instagramApiStatus = st;
+          const banner = document.getElementById('ig-api-status-banner');
+          if (banner) {
+            banner.outerHTML = renderInstagramStatusBadge();
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch Instagram status:', e);
+    } finally {
+      igStatusLoading = false;
+    }
+  }
+
+  function renderInstagramStatusBadge() {
+    const st = window.instagramApiStatus;
+    if (st && st.configured && st.status === 'connected') {
+      const handle = st.account_username ? `@${st.account_username}` : (st.user_name || 'Verified Authority');
+      return `
+        <div id="ig-api-status-banner" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; margin-bottom: 20px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.28); border-radius: var(--radius-md); font-size: 0.82rem; color: #10b981;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+            <strong>Meta Graph API:</strong> <span>Live Connected to ${handle}</span> <span style="color: var(--text-tertiary); font-size: 0.75rem;">(ID: ${st.account_id || ''})</span>
+          </div>
+          <span style="font-size: 0.72rem; font-weight: 700; background: rgba(16, 185, 129, 0.22); color: #10b981; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">OFFICIAL API</span>
+        </div>
+      `;
+    }
+
+    const isExpired = st && st.status === 'expired';
+    const msg = isExpired
+      ? 'Official Meta Graph API Token Expired — Serving Grounded Dataset'
+      : 'Instagram Graph API Awaiting Live Credentials (INSTAGRAM_ACCESS_TOKEN)';
+
+    return `
+      <div id="ig-api-status-banner" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; margin-bottom: 20px; background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.22); border-radius: var(--radius-md); font-size: 0.82rem; color: #f59e0b;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></span>
+          <strong>Meta Graph API:</strong> <span>${msg}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 0.72rem; font-weight: 700; background: rgba(245, 158, 11, 0.18); color: #fbbf24; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">DEMO DATA</span>
+          <button type="button" class="btn btn-secondary" onclick="window.openInstagramSetupModal()" style="padding: 2px 10px; font-size: 0.72rem; border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
+            ⚙️ Setup Instructions
+          </button>
+        </div>
+      </div>
+    `;
   }
 
   function getCurrentReel() {
@@ -42,6 +100,9 @@
     const badge = item.badge
       ? `<span class="video-status-chip" style="background: rgba(99,102,241,0.15); color: var(--brand-indigo);">${item.badge}</span>`
       : '';
+    const modeTag = item.data_mode
+      ? `<span class="video-status-chip" style="background: ${item.data_mode === 'OFFICIAL API' ? 'rgba(16,185,129,0.15)' : 'rgba(245,158,11,0.15)'}; color: ${item.data_mode === 'OFFICIAL API' ? '#10b981' : '#f59e0b'}; font-size: 0.65rem;">${item.data_mode}</span>`
+      : '';
 
     return `
       <div class="video-card-3d ig-content-card${selected}" data-reel-id="${item.id}" onclick="${onClick}">
@@ -57,7 +118,7 @@
             <span>${item.reach || item.engagement || ''} ${item.reach ? 'reach' : ''}</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
-            ${badge}
+            <div style="display: flex; gap: 4px; align-items: center;">${badge}${modeTag}</div>
             ${item.performanceScore ? `<span style="font-size:0.72rem;color:var(--brand-cyan);">Score: ${item.performanceScore}/100</span>` : ''}
           </div>
           <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); if(window.inspectPostDetail) window.inspectPostDetail('instagram', '${item.id}');" style="margin-top: 8px; width: 100%; font-size: 0.72rem; padding: 3px 8px; border-color: rgba(225,48,108,0.4); color: #f43f5e;">
@@ -72,6 +133,10 @@
     if (tab) currentIgTab = tab;
     const container = document.getElementById('instagram-dashboard-content');
     if (!container) return;
+
+    if (!window.instagramApiStatus && !igStatusLoading) {
+      loadInstagramApiStatus();
+    }
 
     const data = getIgData();
     const ov = (data.tabMetrics && data.tabMetrics[currentIgTab]) || data.overview;
@@ -94,7 +159,7 @@
           </button>
         </div>
 
-        <p class="ig-demo-notice">Instagram analytics shown here are simulated demo data for the DHRISTI AI prototype.</p>
+        ${renderInstagramStatusBadge()}
 
         <div class="kpi-grid">
           <div class="kpi-card card-3d">
@@ -556,6 +621,74 @@
     window.renderInstagramRetention();
     window.renderInstagramAudience();
     window.renderInstagramInsights();
+  };
+
+  window.openInstagramSetupModal = function () {
+    const existing = document.getElementById('instagram-setup-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'instagram-setup-modal';
+    modal.className = 'modal-backdrop';
+    modal.setAttribute('style', 'position: fixed; inset: 0; z-index: 10000; background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px;');
+    modal.onclick = function (e) {
+      if (e.target === modal) window.closeInstagramSetupModal();
+    };
+
+    modal.innerHTML = `
+      <div class="glass-panel" style="max-width: 660px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 28px; border-radius: 14px; background: #0c1017; border: 1px solid rgba(0, 242, 254, 0.25); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.25rem;">📸</span>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); font-family: 'Outfit', sans-serif;">Meta Instagram Graph API Setup</h3>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-tertiary); margin-top: 4px;">Connect your official Instagram Business/Creator account for live reels & intelligence streaming.</p>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="window.closeInstagramSetupModal()" style="padding: 4px 10px; font-size: 0.85rem; border-color: rgba(255, 255, 255, 0.15);">✕</button>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; font-size: 0.85rem; color: var(--text-secondary);">
+          <div style="padding: 12px 14px; border-radius: 8px; background: rgba(0, 242, 254, 0.06); border: 1px solid rgba(0, 242, 254, 0.2);">
+            <strong style="color: var(--brand-cyan);">Step 1 — Create a Meta Developer App</strong>
+            <p style="margin-top: 4px; line-height: 1.45;">Visit <a href="https://developers.facebook.com/" target="_blank" style="color: var(--brand-cyan); text-decoration: underline;">developers.facebook.com</a>, create an App, and choose <strong>Business</strong> (or Other/Consumer) as your App Type.</p>
+          </div>
+
+          <div style="padding: 12px 14px; border-radius: 8px; background: rgba(99, 102, 241, 0.06); border: 1px solid rgba(99, 102, 241, 0.2);">
+            <strong style="color: var(--brand-indigo);">Step 2 — Switch to Instagram Professional Account & Link Facebook Page</strong>
+            <p style="margin-top: 4px; line-height: 1.45;">In your Instagram mobile app, switch to a <strong>Professional (Business or Creator)</strong> account. In Meta Business Suite, ensure this Instagram account is linked to your Facebook Page.</p>
+          </div>
+
+          <div style="padding: 12px 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.2);">
+            <strong style="color: #10b981;">Step 3 — Request Required Permissions</strong>
+            <p style="margin-top: 4px; line-height: 1.45;">In the <strong>Graph API Explorer</strong>, add the following scopes:</p>
+            <ul style="margin: 6px 0 0 18px; line-height: 1.6; color: var(--text-primary);">
+              <li><code>instagram_basic</code> — Read profile info and media</li>
+              <li><code>instagram_manage_insights</code> — Access impressions, reach, & engagement</li>
+              <li><code>pages_show_list</code> & <code>pages_read_engagement</code> — Link Page to IG Business ID</li>
+            </ul>
+          </div>
+
+          <div style="padding: 12px 14px; border-radius: 8px; background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2);">
+            <strong style="color: #f59e0b;">Step 4 — Add Credentials to backend/.env</strong>
+            <p style="margin-top: 4px; line-height: 1.45;">Place your generated token into <code>backend/.env</code>:</p>
+            <pre style="background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 6px; font-size: 0.76rem; color: #a5f3fc; margin-top: 6px; overflow-x: auto;">INSTAGRAM_ACCESS_TOKEN=your_meta_access_token
+INSTAGRAM_ACCOUNT_ID=your_instagram_business_account_id</pre>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="window.closeInstagramSetupModal()" style="font-size: 0.82rem; padding: 6px 16px;">Close</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  };
+
+  window.closeInstagramSetupModal = function () {
+    const modal = document.getElementById('instagram-setup-modal');
+    if (modal) modal.remove();
   };
 
   window.populateInstagramContentSelector = function () {

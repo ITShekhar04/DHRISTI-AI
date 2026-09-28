@@ -7,7 +7,25 @@
   (function () {
     'use strict';
 
-    const BACKEND_URL = 'http://localhost:5000';
+    // Dynamic Environment-Aware Backend Resolution:
+    // 1. Explicit window override (e.g. window.DRISHTI_BACKEND_URL or window.BACKEND_URL)
+    // 2. User configured endpoint in localStorage ('drishti_backend_url')
+    // 3. Localhost detection: if running on localhost/127.0.0.1, default to http://localhost:5000
+    // 4. Production Cloud fallback: https://socialpulse-gateway.onrender.com (matching render.yaml)
+    const isLocalhost = Boolean(
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === '' ||
+      window.location.protocol === 'file:'
+    );
+    const PRODUCTION_DEFAULT_BACKEND = 'https://socialpulse-gateway.onrender.com';
+
+    const rawBackendUrl = window.DRISHTI_BACKEND_URL ||
+      window.BACKEND_URL ||
+      localStorage.getItem('drishti_backend_url') ||
+      (isLocalhost ? 'http://localhost:5000' : PRODUCTION_DEFAULT_BACKEND);
+
+    const BACKEND_URL = rawBackendUrl.replace(/\/+$/, '');
     window.isBackendConnected = false;
 
     async function checkBackendStatus() {
@@ -386,7 +404,7 @@
           hookVideoSelection();
         }
       } else {
-        console.log('ℹ️ [Dhristi] Backend not detected on localhost:5000. Operating in static demo mode.');
+        console.log(`ℹ️ [Dhristi] Backend not detected on ${BACKEND_URL}. Operating in static demo mode.`);
       }
     }
 
@@ -527,6 +545,67 @@
       return null;
     }
 
+    async function fetchInstagramStatus() {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/instagram/status`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Instagram status fetch failed:', e);
+      }
+      return null;
+    }
+
+    async function fetchInstagramHashtag(hashtag, limit = 15) {
+      try {
+        const cleanTag = encodeURIComponent((hashtag || '').replace(/^#/, ''));
+        const res = await fetch(`${BACKEND_URL}/api/instagram/hashtag/${cleanTag}?limit=${limit}`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Instagram hashtag fetch failed:', e);
+      }
+      return null;
+    }
+
+    async function fetchInstagramTrends(limit = 10) {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/instagram/trends?limit=${limit}`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Instagram trends fetch failed:', e);
+      }
+      return null;
+    }
+
+    async function fetchFacebookStatus() {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/facebook/status`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Facebook status fetch failed:', e);
+      }
+      return null;
+    }
+
+    async function fetchFacebookPages() {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/facebook/pages`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Facebook pages fetch failed:', e);
+      }
+      return null;
+    }
+
+    async function fetchFacebookFeed(limit = 15) {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/facebook/feed?limit=${limit}`);
+        if (res.ok) return await res.json();
+      } catch (e) {
+        console.warn('[SocialPulse API] Facebook feed fetch failed:', e);
+      }
+      return null;
+    }
+
     // Expose API client methods globally
     window.SocialPulseAPI = {
       checkStatus: checkBackendStatus,
@@ -550,6 +629,14 @@
       fetchMultiPlatformNarrativeIntelligence,
       fetchMultiPlatformAnalytics,
       searchPlatformContent,
+      // Instagram Official API Integration Methods
+      fetchInstagramStatus,
+      fetchInstagramHashtag,
+      fetchInstagramTrends,
+      // Facebook Official Meta Graph API Integration Methods
+      fetchFacebookStatus,
+      fetchFacebookPages,
+      fetchFacebookFeed,
       // Government Intelligence Methods
       loginGov,
       verifyGov2FA,

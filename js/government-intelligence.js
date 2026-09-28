@@ -4035,7 +4035,8 @@
     if (window.showToast) window.showToast('📡 Radar scanning network topology for: ' + topicKey);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/gov/coordination-radar/search?topic=${encodeURIComponent(topicKey)}`);
+      const bUrl = (window.SocialPulseAPI && window.SocialPulseAPI.backendUrl) || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://socialpulse-gateway.onrender.com');
+      const res = await fetch(`${bUrl}/api/gov/coordination-radar/search?topic=${encodeURIComponent(topicKey)}`);
       if (res.ok) {
         const data = await res.json();
         if (data && data.topicData) {
@@ -4399,7 +4400,8 @@
 
         // 1. Fetch telemetry stream from Node service if available
         try {
-          const res = await fetch('http://localhost:5000/api/gov/pipeline/stream');
+          const bUrl = (window.SocialPulseAPI && window.SocialPulseAPI.backendUrl) || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://socialpulse-gateway.onrender.com');
+          const res = await fetch(`${bUrl}/api/gov/pipeline/stream`);
           if (res.ok) {
             const json = await res.json();
             if (json && json.telemetry) {
